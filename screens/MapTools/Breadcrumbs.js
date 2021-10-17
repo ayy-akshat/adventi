@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, KeyboardAvoidingView, TextInput, ScrollView } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, KeyboardAvoidingView, TextInput, ScrollView, Dimensions } from 'react-native';
 import AdventureAppHeader from '../../components/header';
 import * as Location from 'expo-location';
 import MapView, { Marker, Polyline } from 'react-native-maps';
@@ -80,7 +80,10 @@ export default class BreadcrumbsScreen extends React.Component {
                     </Text>
 
                     <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
-                        <MapView style={styles.map} region={Object.keys(this.state.region) !== 0 ? this.state.region : {
+                        <MapView style={[styles.map, {
+                            height: Dimensions.get("screen").height*0.5,
+                            minHeight: Dimensions.get("screen").height*0.5
+                        }]} region={Object.keys(this.state.region) !== 0 ? this.state.region : {
                             latitude: Object.keys(this.state.location) ? this.state.location.coords.latitude : 0,
                             longitude: Object.keys(this.state.location) ? this.state.location.coords.longitude : 0,
                             latitudeDelta: 0.03,
