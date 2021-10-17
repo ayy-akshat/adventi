@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, ScrollView } from 'react-native';
 import AdventureAppHeader from '../../components/header';
 
 export default class MapToolsScreen extends React.Component {
@@ -8,20 +8,23 @@ export default class MapToolsScreen extends React.Component {
             <View style={styles.container}>
                 <SafeAreaView style={styles.sav} />
 
-                <AdventureAppHeader/>
+                <AdventureAppHeader />
 
-                <Text>
-                    Map Tools
-                </Text>
+                <ScrollView contentContainerStyle={{alignItems: 'center'}}>
+                    <Text>
+                        Map Tools
+                    </Text>
 
-                <TouchableOpacity style={styles.navButton} onPress={() => {this.props.navigation.navigate("Breadcrumbs")}}>
-                    <Text style={styles.navButtonTitle}>
-                        Breadcrumbs
-                    </Text>
-                    <Text style={styles.navButtonDesc}>
-                        Automatically make a marker of your location every 5 minutes so that if you get lost, you can find your path.
-                    </Text>
-                </TouchableOpacity>
+                    <TouchableOpacity style={styles.navButton} onPress={() => { this.props.navigation.navigate("Breadcrumbs") }}>
+                        <Text style={styles.navButtonTitle}>
+                            Breadcrumbs
+                        </Text>
+                        <Text style={styles.navButtonDesc}>
+                            Automatically make a marker of your location every 5 minutes so that if you get lost, you can find your path.
+                        </Text>
+                    </TouchableOpacity>
+                </ScrollView>
+
             </View>
         );
     }

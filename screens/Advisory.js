@@ -1,6 +1,5 @@
 import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, TextInput } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import AdventureAppHeader from '../components/header';
 
 export default class AdvisoryScreen extends React.Component {

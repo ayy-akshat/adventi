@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, ScrollView } from 'react-native';
 import AdventureAppHeader from '../../components/header';
 
 export default class NatureToolsScreen extends React.Component {
@@ -8,20 +8,22 @@ export default class NatureToolsScreen extends React.Component {
             <View style={styles.container}>
                 <SafeAreaView style={styles.sav} />
 
-                <AdventureAppHeader/>
+                <AdventureAppHeader />
 
-                <Text>
-                    Nature Tools
-                </Text>
+                <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+                    <Text>
+                        Nature Tools
+                    </Text>
 
-                <TouchableOpacity style={styles.navButton} onPress={() => {this.props.navigation.navigate("PlantIdentifier")}}>
-                    <Text style={styles.navButtonTitle}>
-                        Plant Identifier
-                    </Text>
-                    <Text style={styles.navButtonDesc}>
-                        Identify a plant from a picture.
-                    </Text>
-                </TouchableOpacity>
+                    <TouchableOpacity style={styles.navButton} onPress={() => { this.props.navigation.navigate("PlantIdentifier") }}>
+                        <Text style={styles.navButtonTitle}>
+                            Plant Identifier
+                        </Text>
+                        <Text style={styles.navButtonDesc}>
+                            Identify a plant from a picture.
+                        </Text>
+                    </TouchableOpacity>
+                </ScrollView>
             </View>
         );
     }

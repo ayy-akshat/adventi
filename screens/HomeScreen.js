@@ -1,6 +1,6 @@
 import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity } from 'react-native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, FlatList, ScrollView, Dimensions, KeyboardAvoidingView } from 'react-native';
+import WebView from 'react-native-webview';
 import AdventureAppHeader from '../components/header';
 import RedditPostWidget from '../components/RedditPostWidget';
 
@@ -21,13 +21,12 @@ export default class HomeScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <KeyboardAvoidingView style={styles.container} behavior="position">
                 <SafeAreaView style={styles.sav} />
 
                 <AdventureAppHeader />
 
-                <ScrollView>
-                    <View style={styles.section}></View>
+                <ScrollView contentContainerStyle={{paddingBottom: 300}}>
                     <View style={styles.section}>
                         <Text style={styles.thiccSubheader}>
                             Scenery
@@ -42,13 +41,30 @@ export default class HomeScreen extends React.Component {
                         <Text style={styles.thiccSubheader}>
                             Places to visit...
                         </Text>
-                        {
+                        <Text style={styles.subtitle}>
+                            From Tripadvisor
+                        </Text>
+                        {/* {
                             this.renderPlacesToVisitList(this.state.placesToVisitPosts)
-                        }
+                        } */}
+
+                        <WebView
+                            source={{
+                                uri: "https://www.tripadvisor.com/"
+                            }}
+                            scalesPageToFit={true}
+                            style={{
+                                marginTop: 20,
+                                width: "100%",
+                                height: Dimensions.get("screen").height*0.6,
+                                minWidth: "100%",
+                                borderRadius: 20
+                            }}
+                        />
                     </View>
                 </ScrollView>
 
-            </View >
+            </KeyboardAvoidingView>
         );
     }
 

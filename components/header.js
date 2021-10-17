@@ -14,7 +14,7 @@ const AdventureAppHeader = () =>
 
 const styles = StyleSheet.create({
     header: {
-        marginVertical: 50,
+        marginTop: 50,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     headerTxt: {
         fontWeight: 'bold',
         marginHorizontal: 10,
-        fontSize: 30,
+        fontSize: 50,
         color: "black"
     },
 })

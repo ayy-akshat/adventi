@@ -1,9 +1,8 @@
 import React from 'react';
-import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, KeyboardAvoidingView, TextInput, ScrollView } from 'react-native';
 import AdventureAppHeader from '../../components/header';
 import * as Location from 'expo-location';
 import MapView, { Marker, Polyline } from 'react-native-maps';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 var interval = {
     intervals: new Set(),
