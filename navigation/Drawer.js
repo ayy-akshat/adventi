@@ -4,18 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import CustomSideBarOption from '../components/customSideBarOptions';
 import AdvisoryScreen from '../screens/Advisory';
 import HomeScreen from '../screens/HomeScreen';
-import MapToolsScreen from '../screens/MapTools/MapTools';
 import MapToolsNav from '../screens/MapToolsNav';
-import NatureToolsScreen from '../screens/NatureTools/NatureTools';
 import NatureToolsNav from '../screens/NatureToolsNav';
 import PackCheckScreen from '../screens/PackCheckScreen';
-import RemindersScreen from '../screens/RemindersScreen';
 
 const Drawer = createDrawerNavigator();
 
 export default class DrawerNav extends React.Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
     }
 
@@ -27,37 +23,56 @@ export default class DrawerNav extends React.Component {
                 <Drawer.Screen
                     name="Home"
                     component={HomeScreen}
-                    options={{ unmountOnBlur: true }}
+                    options={{
+                        unmountOnBlur: true,
+                        headerStyle: {
+                            backgroundColor: '#d6f0d1',
+                        }
+                    }}
                 />
 
                 <Drawer.Screen
                     name="Map Tools"
                     component={MapToolsNav}
-                    options={{ unmountOnBlur: true }}
-                />
-                
-                <Drawer.Screen
-                    name="Nature Tools"
-                    component={NatureToolsNav}
-                    options={{ unmountOnBlur: true }}
-                />
-                
-                <Drawer.Screen
-                    name="Packing Checklist"
-                    component={PackCheckScreen}
-                    options={{ unmountOnBlur: true }}
+                    options={{
+                        unmountOnBlur: true,
+                        headerStyle: {
+                            backgroundColor: '#d6f0d1',
+                        }
+                    }}
                 />
 
                 <Drawer.Screen
-                    name="Reminders"
-                    component={RemindersScreen}
-                    options={{ unmountOnBlur: true }}
+                    name="Nature Tools"
+                    component={NatureToolsNav}
+                    options={{
+                        unmountOnBlur: true,
+                        headerStyle: {
+                            backgroundColor: '#d6f0d1',
+                        }
+                    }}
+                />
+
+                <Drawer.Screen
+                    name="Packing Checklist"
+                    component={PackCheckScreen}
+                    options={{
+                        unmountOnBlur: true,
+                        headerStyle: {
+                            backgroundColor: '#d6f0d1',
+                        }
+                    }}
                 />
 
                 <Drawer.Screen
                     name="Advisory"
                     component={AdvisoryScreen}
-                    options={{ unmountOnBlur: true }}
+                    options={{
+                        unmountOnBlur: true,
+                        headerStyle: {
+                            backgroundColor: '#d6f0d1',
+                        }
+                    }}
                 />
 
             </Drawer.Navigator>

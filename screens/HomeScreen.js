@@ -26,13 +26,10 @@ export default class HomeScreen extends React.Component {
 
                 <AdventureAppHeader />
 
-                <ScrollView contentContainerStyle={{paddingBottom: 300}}>
+                <ScrollView contentContainerStyle={{ paddingBottom: 300 }}>
                     <View style={styles.section}>
-                        <Text style={styles.thiccSubheader}>
-                            Scenery
-                        </Text>
                         <Text style={styles.subtitle}>
-                            Click to get a new one, hold to open in Reddit.
+                            Click to get a new image, hold to open in Reddit.
                         </Text>
                         <RedditPostWidget post={this.state.r_EarthPorn} onPress={this.getImage} />
                     </View>
@@ -56,10 +53,12 @@ export default class HomeScreen extends React.Component {
                             style={{
                                 marginTop: 20,
                                 width: "100%",
-                                height: Dimensions.get("screen").height*0.6,
+                                height: Dimensions.get("screen").height * 0.6,
                                 minWidth: "100%",
                                 borderRadius: 20
                             }}
+                            ref={(ref) => {this.webview = ref}}
+                            onLoad={this.injectJsToWv}
                         />
                     </View>
                 </ScrollView>
@@ -105,12 +104,30 @@ export default class HomeScreen extends React.Component {
         )
     }
 
+    injectJsToWv = () => {
+        this.webview.injectJavaScript(`
+        try {
+            var r = document.getElementsByClassName("dqRmR cyevx dcDXR dJjeH");
+            for (var i = 0; i < r.length; i++) { r[i].remove() }
+            } catch{}
+            try {document.getElementsByClassName("ad eWQWb _h Gi f e j u")[0].remove();} catch{}
+            try {document.getElementsByClassName("bdYcv _Q Gi Ra P6 Za")[0].remove();} catch{}
+            try {document.getElementsByClassName("OhjWW Cj Pl PN Py PA")[0].remove();} catch {}
+            try {document.getElementsByClassName("dWGoN f e o")[0].remove();} catch{}
+            try {document.getElementsByClassName("crvbs")[0].remove();} catch{}
+            try {document.getElementsByClassName("prw_rup prw_search_search_results_filters ajax-content active-search-filters")[0].remove()} catch{}
+            try {document.getElementsByClassName("ad_column_sticky ui_column is-3-desktop")[0].remove();} catch{}
+            try {document.getElementsByClassName("DBxAQ")[0].remove(); window.scrollBy(0, 30)} catch{}
+        `)
+    }
+
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 20,
+        backgroundColor: "#eefceb"
     },
     sav: {
         height: Platform.OS === "android" ? StatusBar.currentHeight : 0

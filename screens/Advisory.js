@@ -227,6 +227,14 @@ export default class AdvisoryScreen extends React.Component {
                                                 </Text>
                                             </View>
                                         </View>
+                                        <View style={{height: 20}}></View>
+                                        <TouchableOpacity style={styles.thiccNavBtn} onPress={() => {
+                                            this.props.navigation.navigate("Packing Checklist", {place: this.state.data.name + ", " + this.state.data.sys.country});
+                                        }}>
+                                            <Text style={styles.thiccNavBtnTxt}>
+                                                Planning a trip? Make a checklist.
+                                            </Text>
+                                        </TouchableOpacity>
                                     </View>
                                 </ScrollView>
                             )
@@ -258,7 +266,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        backgroundColor: "#eefceb"
     },
     sav: {
         height: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -271,7 +280,7 @@ const styles = StyleSheet.create({
         width: "74%",
     },
     searchButton: {
-        backgroundColor: '#CADECD',
+        backgroundColor: '#A7C7E7',
         padding: 10,
         borderRadius: 10,
         marginVertical: 20,
@@ -281,5 +290,18 @@ const styles = StyleSheet.create({
     weatherDataScrollView: {
         flex: 0.8,
         width: "100%"
+    },
+    thiccNavBtn: {
+        width: "100%",
+        backgroundColor: "#caebef",
+        padding: 20,
+        borderRadius: 1000,
+        marginVertical: 5,
+        alignItems: 'center'
+    },
+    thiccNavBtnTxt: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 });

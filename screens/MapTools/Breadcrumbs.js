@@ -53,7 +53,7 @@ export default class BreadcrumbsScreen extends React.Component {
 
     componentDidMount() {
         this.getLocation((loc) => {
-            console.log("location", loc.coords);
+            console.log("callback - location", loc.coords);
             this.setState({
                 region: {
                     ...loc.coords,
@@ -71,8 +71,8 @@ export default class BreadcrumbsScreen extends React.Component {
                     <SafeAreaView style={styles.sav} />
 
                     <Text style={{
-                        marginVertical: 20,
-                        fontSize: 20,
+                        marginTop: 20,
+                        fontSize: 30,
                         fontWeight: 'bold',
                         fontStyle: 'italic'
                     }}>
@@ -81,8 +81,8 @@ export default class BreadcrumbsScreen extends React.Component {
 
                     <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
                         <MapView style={[styles.map, {
-                            height: Dimensions.get("screen").height*0.5,
-                            minHeight: Dimensions.get("screen").height*0.5
+                            height: Dimensions.get("screen").height * 0.5,
+                            minHeight: Dimensions.get("screen").height * 0.5
                         }]} region={Object.keys(this.state.region) !== 0 ? this.state.region : {
                             latitude: Object.keys(this.state.location) ? this.state.location.coords.latitude : 0,
                             longitude: Object.keys(this.state.location) ? this.state.location.coords.longitude : 0,
@@ -158,7 +158,19 @@ export default class BreadcrumbsScreen extends React.Component {
                                 keyboardType="numeric"
                                 maxLength={6}
                             />
-                            <TouchableOpacity style={styles.searchButton} onPress={() => { this.trackLocEvery(this.state.intervalInput * 1000) }}>
+                            <TouchableOpacity style={styles.searchButton} onPress={() => {
+                                if (isNaN(this.state.intervalInput) || this.state.intervalInput.trim() == "") {
+                                    alert("Enter a number in seconds");
+                                    return;
+                                }
+                                else if (parseFloat(this.state.intervalInput) < 10) {
+                                    alert("Please enter a number in seconds greater than 10.");
+                                    return;
+                                }
+                                else {
+                                    this.trackLocEvery(this.state.intervalInput * 1000)
+                                }
+                            }}>
                                 <Text>
                                     Set
                                 </Text>
@@ -237,7 +249,7 @@ export default class BreadcrumbsScreen extends React.Component {
             locList.push(loc);
             this.setState({ locPerms: true, location: loc, locs: locList, waitForMap: false });
             console.log(loc);
-            callback ? callback(loc) : undefined;
+            if (callback) callback(loc);
         }
     }
 }
@@ -246,7 +258,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        backgroundColor: "#eefceb"
     },
     sav: {
         height: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -276,7 +289,7 @@ const styles = StyleSheet.create({
     },
     thiccBtn: {
         width: "100%",
-        backgroundColor: "#e7c2a7",
+        backgroundColor: "#dcefca",
         padding: 20,
         borderRadius: 1000,
         marginVertical: 5,

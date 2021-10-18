@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        backgroundColor: "#eefceb"
     },
     sav: {
         height: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
         borderRadius: 1000,
         padding: 20,
         paddingHorizontal: 50,
-        backgroundColor: "#CADECD",
+        backgroundColor: "#caebef",
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 10,

@@ -20,7 +20,7 @@ export default class MapToolsScreen extends React.Component {
                             Breadcrumbs
                         </Text>
                         <Text style={styles.navButtonDesc}>
-                            Automatically make a marker of your location every 5 minutes so that if you get lost, you can find your path.
+                            Automatically make a marker of your location every x seconds so that if you get lost, you can find your path.
                         </Text>
                     </TouchableOpacity>
                 </ScrollView>
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        backgroundColor: "#eefceb"
     },
     sav: {
         height: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
         borderRadius: 1000,
         padding: 20,
         paddingHorizontal: 50,
-        backgroundColor: "#CADECD",
+        backgroundColor: "#caebef",
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 10,
