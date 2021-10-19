@@ -49,5 +49,4 @@
     7. The app should open in the Expo Go app!
 
 # [Presentation link](https://docs.google.com/presentation/d/1FNqJCnUlp0q1mcX7nNMdhRbcBq0SyUURWgoGMsqpuLQ/edit?usp=sharing)
-# [GitHub Link](https://github.com/ayy-akshat/adventi)
 # [Download Website for Adventi](https://adventi.akze.repl.co/)
